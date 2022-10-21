@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>tensorflowJS</title>
+		<script src="libraries/p5.js"></script>
+		<!-- <script src="libraries/p5.sound.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+		<script src="sketch.js"></script>
+		<script src="a.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			canvas {
+				margin: auto;
+			}
+			#model_prediction {
+				margin-top: 3%;
+		    margin-left: 0%;
+		    display: inline-block;
+		    float: right;
+		    width: 60%;
+				/* // could be 100px for example */
+				/* color: #ffffff; */
+			}
+			p {
+				color: #ffffff;
+			}
+			.noselect {
+			  -webkit-touch-callout: none; /* iOS Safari */
+			  -webkit-user-select: none; /* Safari */
+			  -khtml-user-select: none; /* Konqueror HTML */
+			  -moz-user-select: none; /* Old versions of Firefox */
+			  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+			                                  supported by Chrome, Edge, Opera and Firefox */
+			}
+			.nohigh::selection {
+			  background: transparent;
+			}
+			h1 {
+				/* margin: 5%; */
+				/* margin-top: 3%; */
+		    margin-left: 3%;
+		    /* display: inline-block; */
+		    /* float: right; */
+		    width: 60%;
+    		color: #ffffff;
+    		/* background-color: rgb(255, 255, 121); */
+				/* padding: 0%; */
+				/* padding: 100px */
+				/* margin: 0% */
+
+			}
+			body {
+				/* background-color: rgb(255, 255, 121) */
+				background-color: rgb(87, 92, 96);
+
+			}
+			.defaultCanvas0 {
+			   width: Xu;
+			   height: Yu;
+			   position: absolute;
+			   top: 50%;
+			   left: 50%;
+			   margin-left: -(X/2)u;
+			   margin-top: -(Y/2)u;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Doodle Classifier</h1>
+		<p id="model_prediction" class="noselect">--</p>
+		<p id="model_prediction">use 'e' to erase and 'c' to clear</p>
+	</body>
+</html>
