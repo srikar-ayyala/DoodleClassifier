@@ -1,6 +1,5 @@
 let img_side = 28;
 let canvasLength = img_side*img_side*5/7;
-let fr = 30;
 let size = 32;
 let pen = true;
 let class_name = ['cat', 'helicopter', 'octopus', 'popsicle', 'tractor']
@@ -8,16 +7,21 @@ let class_name = ['cat', 'helicopter', 'octopus', 'popsicle', 'tractor']
 let doodleLayer;
 let model;
 
+let predictCount = 0;
+
 function setup() {
 	createCanvas(canvasLength, canvasLength);
 	doodleLayer = createGraphics(canvasLength, canvasLength);
 	doodleLayer.clear();
 	LoadModel();
-	frameRate(fr);
 }
 
 function draw() {
-	predictAns();
+	if(predictCount > frameRate()/10) {
+		predictAns();
+		predictCount = 0;
+	}
+	predictCount++;
 
 	background(0);
 
@@ -30,20 +34,15 @@ function draw() {
 function predictAns() {
 	img = doodleLayer.get();
 	img.loadPixels();
-	// print(img);
-	// const canvas = document.getElementById('defaultCanvas0');
-	// const ctx = canvas.getContext('2d', { willReadFrequently: true });
-	// print(ctx);
 	img.resize(img_side, img_side);
 
 	let input_img = []
 	for(let i = 0; i < img_side*img_side; i++) {
 		input_img[i] = img.pixels[4*i];
 	}
-	// return;
-	// noLoop();
 
 	input_img_tensor = tf.tensor(input_img, shape = [1, 28, 28]);
+	if(model == undefined) return;
 	const prediction =  model.predict(input_img_tensor);
 	const prediction_val = prediction.dataSync();
 
